@@ -29,7 +29,7 @@ Exactly 3 projects. No media/screenshots — relies on text only, so description
 ## 4. Blog Section (Should-Have)
 Delivered as additional static HTML pages — one per post — not part of the single scrolling main page. Requires two content structures:
 
-**Blog Index** (list/teaser, placed on the main page or a dedicated index page — see Gaps below)
+**Blog Index** (list/teaser) — its own **dedicated page**, reached via a link in the main page's Header nav (not the footer). Decided; see Gaps below.
 
 | Field | Description | Constraints |
 |---|---|---|
@@ -70,4 +70,6 @@ Lives in HTML `<head>`, not on-page content:
 
 ## Remaining Open Items
 - Image weight/format standard for the OG/social-preview asset (if one is added later) is still undefined — not urgent since it's optional metadata, not a page section.
-- **Blog Index placement is undecided**: it could live as a short list on the main single-page site (linking out to post pages), or as its own dedicated index page. This affects site navigation structure and should be resolved before building.
+
+## Gaps Resolved (later)
+6. ~~Blog Index placement~~ — resolved: its own **dedicated index page**, linked from a **Header nav** on the main page (not the footer). Introduces a persistent Header nav element; footer loses its navigation role.

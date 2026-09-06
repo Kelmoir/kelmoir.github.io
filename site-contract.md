@@ -7,11 +7,12 @@ Static site. No backend, no database, no authentication. All behavior is CSS/Jav
 ## 1. Page Structure
 
 ### Main Page (single scrolling page)
-1. **Hero** — establishes identity and role the instant the page loads, before any elaboration.
-2. **About/Bio** — gives warm personal/professional context beyond the Hero's headline.
-3. **Project Showcase** — demonstrates concrete work through exactly 3 project entries.
-4. **Contact** — gives the visitor two direct, backend-free ways to reach out.
-5. **Footer** — provides the entry point into the Blog (not previously specified in the content model; added here since the Blog lives on a separate page and needs a link from the main page to be reachable).
+1. **Header** — persistent top navigation: in-page anchor links (About, Projects, Contact) plus a link to the separate Blog Index page. Present at all breakpoints.
+2. **Hero** — establishes identity and role the instant the page loads, before any elaboration.
+3. **About/Bio** — gives warm personal/professional context beyond the Hero's headline.
+4. **Project Showcase** — demonstrates concrete work through exactly 3 project entries.
+5. **Contact** — gives the visitor two direct, backend-free ways to reach out.
+6. **Footer** — closing element only (minimal site info / copyright). Does **not** carry the Blog link — that lives in the Header (decision below).
 
 ### Blog Index Page (separate page)
 1. **Post List** — gives visitors an overview of all posts, each linking to its own page.
@@ -24,6 +25,12 @@ Static site. No backend, no database, no authentication. All behavior is CSS/Jav
 ---
 
 ## 2. Content Inventory
+
+### Header
+| Field | Description | Constraints |
+|---|---|---|
+| Section Links | In-page anchors to About, Projects, Contact | ≤1 word label each; smooth-scroll |
+| Blog Link | Link to the Blog Index page | ≤2 words label (e.g., "Blog"); standard page navigation |
 
 ### Hero
 | Field | Description | Constraints |
@@ -54,7 +61,7 @@ Static site. No backend, no database, no authentication. All behavior is CSS/Jav
 ### Footer
 | Field | Description | Constraints |
 |---|---|---|
-| Blog Link | Link to Blog Index page | ≤2 words label (e.g., "Blog") |
+| Site Info | Minimal closing text (e.g., name + year) | Plain text, 1 line; no navigation role |
 
 ### Blog Index — Post List (per entry)
 | Field | Description | Constraints |
@@ -76,8 +83,8 @@ Static site. No backend, no database, no authentication. All behavior is CSS/Jav
 ## 3. Behaviour Spec
 
 ### Navigation
-- Main page sections are reached via smooth-scroll anchor links (single-page nav).
-- Blog Link (footer) and Post Title links (index) are standard page navigations — full page load, no client-side routing, consistent with static-site constraints.
+- Main page sections are reached via smooth-scroll anchor links in the persistent Header (single-page nav).
+- Blog Link (Header) and Post Title links (index) are standard page navigations — full page load, no client-side routing, consistent with static-site constraints.
 - Back-to-Index Link on post pages is a standard link back to the Blog Index page.
 
 ### Scroll Behaviour
@@ -85,11 +92,12 @@ Static site. No backend, no database, no authentication. All behavior is CSS/Jav
 - No scroll-jacking or forced-scroll sections — visitor retains normal scroll control throughout.
 
 ### Hover States (by element type)
-- **Text links** (Blog Link, Post Title, Back-to-Index): underline or subtle color shift on hover, ~150–200ms ease transition.
+- **Text links** (Header section links, Header Blog Link, Post Title, Back-to-Index): underline or subtle color shift on hover, ~150–200ms ease transition.
 - **CTA elements** (Email CTA): subtle background/opacity shift on hover — no scale or bounce, to stay consistent with the calm Design Standard.
 - **Project entries**: subtle background tint or border highlight on hover to indicate interactivity, if the entry is clickable; if not clickable, no hover state (avoid implying interactivity that isn't there).
 
 ### Mobile Layout Changes
+- Header stays a single horizontal row of inline links at all breakpoints — no hamburger, no collapse. Labels are short enough (≤2 words each, 4 links total) to fit; wrap to a second line before ever hiding a link.
 - Hero, About, Contact, and Footer stack vertically at all breakpoints (already single-column by design).
 - Project Showcase switches from a multi-column grid (desktop) to a single stacked column (mobile).
 - Font sizes scale down proportionally on narrow viewports; no content is hidden or truncated on mobile.
@@ -103,5 +111,5 @@ Static site. No backend, no database, no authentication. All behavior is CSS/Jav
 ---
 
 ## Assumptions & Additions Made in This Contract
-- **Footer with Blog Link** and **Back-to-Index Link** were added — required for the Blog Index page to be reachable and returnable-from, but not previously specified in the content model.
-- **Mobile nav approach**: no hamburger/menu component introduced — smooth-scroll anchors remain simple in-page links at all breakpoints, consistent with the site's calm, low-complexity direction. Flag if a persistent mobile nav is wanted instead.
+- **Blog Index is its own dedicated page** (not a list on the main page), and the **link to it lives in the Header nav**, not the footer — user decision. The footer is now a closing element with no navigation role. **Back-to-Index Link** on post pages was added so the Blog Index is returnable-from.
+- **Persistent Header nav**: the main page has a top navigation bar carrying the in-page section anchors plus the Blog link. It stays a row of inline links at every breakpoint — **no hamburger/menu component**, consistent with the site's calm, low-complexity direction.
