@@ -43,14 +43,32 @@
     }
   }
 
-  /* -------- Header hairline once the page has scrolled -------- */
+  /* -------- Header: scrolled hairline + keep --header-h honest -------- */
   var header = document.querySelector('.page-header');
   if (header) {
+    var scrolled;
     var setScrolled = function () {
-      header.setAttribute('data-scrolled', String(window.scrollY > 4));
+      var next = window.scrollY > 4;
+      if (next === scrolled) return;
+      scrolled = next;
+      header.setAttribute('data-scrolled', String(next));
     };
     setScrolled();
     window.addEventListener('scroll', setScrolled, { passive: true });
+
+    // The nav can wrap to a second row on narrow viewports (site-contract §3);
+    // scroll-padding-top and the hero's min-height both key off --header-h.
+    var syncHeaderHeight = function () {
+      root.style.removeProperty('--header-h');           // fall back to the stylesheet value
+      root.style.setProperty('--header-h', header.offsetHeight + 'px');
+    };
+    syncHeaderHeight();
+    if ('ResizeObserver' in window) {
+      new ResizeObserver(syncHeaderHeight).observe(header);
+    } else {
+      window.addEventListener('resize', syncHeaderHeight, { passive: true });
+    }
+    window.addEventListener('load', syncHeaderHeight);
   }
 
   /* -------- Active section marker in the header nav -------- */
@@ -60,15 +78,20 @@
     .filter(Boolean);
 
   if (sections.length && 'IntersectionObserver' in window) {
+    var inBand = Object.create(null);
     var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var id = entry.target.id;
-        navLinks.forEach(function (link) {
-          var active = link.getAttribute('data-section') === id;
-          if (active) link.setAttribute('data-active', '');
-          else link.removeAttribute('data-active');
-        });
+        inBand[entry.target.id] = entry.isIntersecting;
+      });
+      // Topmost section in the detection band wins; when none is in it
+      // (e.g. the hero fills the viewport) no nav link is marked.
+      var activeId = null;
+      for (var i = 0; i < sections.length; i++) {
+        if (inBand[sections[i].id]) { activeId = sections[i].id; break; }
+      }
+      navLinks.forEach(function (link) {
+        if (link.getAttribute('data-section') === activeId) link.setAttribute('data-active', '');
+        else link.removeAttribute('data-active');
       });
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
     sections.forEach(function (section) { spy.observe(section); });
