@@ -57,6 +57,8 @@ Static site. No backend, no database, no authentication. All behavior is CSS/Jav
 | Email CTA | Call-to-action label | ≤3 words, calm/confident tone |
 | Email Link | `mailto:` address | Resolves without backend logic |
 | LinkedIn Link | Static profile URL | Plain URL, no backend logic |
+| GitHub Link | Static profile URL (`https://github.com/Kelmoir`) | Plain URL, no backend logic |
+| Hugging Face Link | Static profile URL (`https://huggingface.co/Kelmoir`) | Plain URL, no backend logic |
 
 ### Footer
 | Field | Description | Constraints |
@@ -92,7 +94,7 @@ Static site. No backend, no database, no authentication. All behavior is CSS/Jav
 - No scroll-jacking or forced-scroll sections — visitor retains normal scroll control throughout.
 
 ### Hover States (by element type)
-- **Text links** (Header section links, Header Blog Link, Post Title, Back-to-Index): underline or subtle color shift on hover, ~150–200ms ease transition.
+- **Text links** (Header section links, Header Blog Link, Post Title, Back-to-Index, Contact profile links — LinkedIn / GitHub / Hugging Face): underline or subtle color shift on hover, ~150–200ms ease transition.
 - **CTA elements** (Email CTA): subtle background/opacity shift on hover — no scale or bounce, to stay consistent with the calm Design Standard.
 - **Project entries**: subtle background tint or border highlight on hover to indicate interactivity, if the entry is clickable; if not clickable, no hover state (avoid implying interactivity that isn't there).
 

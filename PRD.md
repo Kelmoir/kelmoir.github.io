@@ -21,7 +21,7 @@ A personal portfolio — a primary single-page profile plus a small set of stati
 ### Should-Have
 - Single-page smooth-scroll navigation between sections
 - Downloadable résumé/CV (static file link)
-- Social/external profile links (GitHub, LinkedIn, etc.)
+- Social/external profile links (LinkedIn, GitHub, Hugging Face)
 - Blog section, delivered as additional static HTML pages (one page per post), linked from the main page — no CMS, no database, posts authored/generated as static files
 
 ### Nice-to-Have

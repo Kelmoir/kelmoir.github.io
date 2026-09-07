@@ -1,6 +1,6 @@
 # Content Model: Personal Portfolio Site
 
-Scope: Must-Have features, plus the Blog feature (Should-Have). Other Should-Have items (nav, résumé link, social links beyond LinkedIn) remain excluded.
+Scope: Must-Have features, plus the Blog feature and social/external profile links (both Should-Have). Other Should-Have items (résumé link) remain excluded.
 
 ## 1. Hero Section
 Distinct from About — this is the immediate, above-the-fold moment: who this is and what they do, before any elaboration.
@@ -52,6 +52,10 @@ Delivered as additional static HTML pages — one per post — not part of the s
 | Email CTA | Short call-to-action label (e.g., "Get in touch") | ≤3 words, calm/confident tone |
 | Email Link | `mailto:` address | Must resolve without backend logic |
 | LinkedIn Link | Static link to LinkedIn profile | Plain URL, no backend logic |
+| GitHub Link | Static link to GitHub profile (`https://github.com/Kelmoir`) | Plain URL, no backend logic |
+| Hugging Face Link | Static link to Hugging Face profile (`https://huggingface.co/Kelmoir`) | Plain URL, no backend logic |
+
+Secondary profile links (LinkedIn, GitHub, Hugging Face) sit together in one line below the email CTA — the email stays the primary contact path.
 
 ---
 
@@ -73,3 +77,4 @@ Lives in HTML `<head>`, not on-page content:
 
 ## Gaps Resolved (later)
 6. ~~Blog Index placement~~ — resolved: its own **dedicated index page**, linked from a **Header nav** on the main page (not the footer). Introduces a persistent Header nav element; footer loses its navigation role.
+7. ~~Social links scope~~ — resolved: the Should-Have "social/external profile links" ships as GitHub and Hugging Face links alongside LinkedIn, in the Contact section's secondary line. Résumé/CV link stays out of scope.
