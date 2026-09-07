@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Incentive Balancing in Agentic Systems — Sebastian Hacker</title>
+  <meta name="description" content="Why oversight agents exist, and how I arrived at the term Incentive Balancing for the work of keeping a multi-agent setup honest.">
+  <meta name="color-scheme" content="light dark">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../styles.css">
+
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="page-header">
+    <div class="container">
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a class="nav-link" href="../index.html#about">About</a></li>
+          <li><a class="nav-link" href="../index.html#projects">Projects</a></li>
+          <li><a class="nav-link" href="../index.html#contact">Contact</a></li>
+          <li><a class="nav-link" href="index.html" aria-current="page">Blog</a></li>
+        </ul>
+      </nav>
+
+      <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+        <span data-icon="moon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+          </svg>
+        </span>
+        <span data-icon="sun" aria-hidden="true" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="section post">
+      <div class="container">
+        <header class="post-header">
+          <h1 class="post-header__title">Incentive Balancing in Agentic Systems</h1>
+          <p class="post-header__date">Sep 2026</p>
+        </header>
+
+        <div class="post-body">
+          <p class="lead">Anyone, who has worked on agentic systems knows this: each agent optimizes for its own goals. Coders write code that supposedly does the task, cutting corners when convenient. Testers write tests that pass, even if they have to monkey patch for the code.</p>
+
+          <p>And there are techniques out to handle that. For quite some time. And there are different names for those. Anthropic's "Constitutional AI" or "Critic Agents". Or "Oversight Agents" or "Monitor Agents",… . Many different names, but all trying to solve the same fundamental problem. But what is the fundamental problem? The agents are genuinely doing what they are supposed to do. Thus we have other agents check their work.</p>
+
+          <p>We humans have learned through our junior time, that there is much more to a solution, than just some hopefully working code. We learned that the incentive of finishing fast doesn't work, because we didn't actually finish. But had to sink much more time into the problem, precisely because we tried to finish fast. And then, learned from the experience. We shifted our focus to the big picture, seeing the current scope as a puzzle piece, that not just needs to work, but also fit.</p>
+
+          <p>While the AI is getting better and better at writing code, reviewing it, etc… It still acts as a contractor paid by the token. It did not know the scope 5 seconds ago, it has never grasped the big picture, and it will have forgotten the scope seconds after completing it — unless you continue the chat. Thus it has no incentive of focusing on the big picture. It has, however, all the incentive to complete its current task supposedly correct.</p>
+
+          <p>So in order to properly balance out those bad incentives, it helps to understand the actual problem: the AI is genuinely doing what it was incentivized during training. Being helpful, trying to be right, and at the end, cutting corners a bit - when nobody is looking so the score goes up. We aren't necessarily looking for errors in the agents, but we are trying to balance out the incentives of the agents, so that in their sum and total, they work towards a common goal. Perfectly? Probably not, but more in line with the things we actually want.</p>
+
+          <p>Thus, I got to the term of Incentive Balancing or Balancing of Incentives.</p>
+
+          <p>When I asked Claude to review my agentic setup in regards of their incentives and check, which of the other agents is set up to counteract or balance those, it understood the core concept of the goal. And suggested meaningful adjustments to tackle the incentive issue. If we just also could do that with our politicians… But that is not the topic.</p>
+
+          <p>Finally, this was just a blog post on how I managed to understand the incentive issue for myself.</p>
+        </div>
+
+        <a class="back-link" href="index.html">← All posts</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Sebastian Hacker</p>
+    </div>
+  </footer>
+
+  <script src="../script.js" defer></script>
+</body>
+</html>
